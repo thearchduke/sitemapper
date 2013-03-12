@@ -10,15 +10,6 @@ import pylab as plt
 
 import json, sys
 
-########### POSSIBLE IDEA FOR INDEPENDENT STUDY
-###### Will eventually involve networkx &c. for visualization
-###### Can be more universal than existing tools b/c a Flask app can run this (therefore the internet can do
-######   it for arbitrary machines)
-########### TO DO:
-###### Research existing tools better
-###### Plug everything into a graph for visualization
-###### Learn how said graphs work
-
 
 
 masterKeys = []
@@ -50,9 +41,6 @@ def getLinks(url, domain):
     return linked
 
 
-#### See above comment. But basically, this reads the list it returns. Good for recursion.
-#### Going to need to transfer this to a dictionary so we can support uniqueness and direction of links.
-#### Gonna need some whiteboard time here. Maybe talk to Alan about this??
 def readList(urlList, domain):
     out = []
     for url in urlList:
@@ -88,12 +76,8 @@ import sys
 while i <= deep:
     print 'recursing'
     for d in out2:
-        #print 'recursing on'
-        #print out2
         for k in d:
             print 'new list'
-            #print d
-            #print "^^^What's the problem?"
             test = readList(d[k], domainBase)
             try:
                 out3.append(test[0])
@@ -139,8 +123,6 @@ for page in siteMap:
         for url in page[key]:
             h.add_edge(key, url)
             e_colors.append(tempColor)
-
-#print e_colors
 
 plt.figure(1, figsize=(55,55))
 
